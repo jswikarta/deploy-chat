@@ -52,7 +52,7 @@ function Chat({ ws, selectedRoom, setSelectedRoom }) {
 
   return (
     <>
-      <div className="flex min-h-screen flex-col bg-gray-200">
+      <div className="flex max-h-screen flex-col bg-gray-200">
         <Navbar selectedRoom={selectedRoom} setSelectedRoom={setSelectedRoom} />
 
         <div className="flex-1 overflow-y-auto px-8 pt-14 pb-24">
