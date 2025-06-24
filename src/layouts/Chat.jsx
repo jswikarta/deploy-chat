@@ -7,6 +7,8 @@ function Chat({ ws, selectedRoom, setSelectedRoom }) {
   const [firstLoad, setFirstLoad] = useState([]);
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null);
+  const chatContainerRef = useRef(null); // Ref untuk div chat messages
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
 
   const scrollToBottom = (behavior) => {
     messagesEndRef.current?.scrollIntoView({ behavior: behavior });
@@ -50,12 +52,55 @@ function Chat({ ws, selectedRoom, setSelectedRoom }) {
     };
   }, [ws, selectedRoom.id]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      // Ini adalah cara yang sangat sederhana dan tidak 100% akurat
+      // untuk mendeteksi keyboard virtual.
+      // Anda mungkin perlu menyesuaikan ambang batas (threshold) ini.
+      const initialViewportHeight = window.innerHeight;
+      const currentViewportHeight = window.visualViewport.height; // Lebih baik menggunakan visualViewport
+
+      // Jika tinggi visualViewport berkurang secara signifikan, kemungkinan keyboard terbuka
+      if (initialViewportHeight - currentViewportHeight > 100) {
+        // Angka 100 ini bisa disesuaikan
+        setKeyboardOpen(true);
+      } else {
+        setKeyboardOpen(false);
+      }
+    };
+
+    // Gunakan window.visualViewport jika tersedia (lebih akurat untuk keyboard virtual)
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", handleResize);
+    } else {
+      window.addEventListener("resize", handleResize);
+    }
+
+    return () => {
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", handleResize);
+      } else {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, []);
+
   return (
     <>
       <div className="flex max-h-screen flex-col bg-gray-200">
         <Navbar selectedRoom={selectedRoom} setSelectedRoom={setSelectedRoom} />
 
-        <div className="flex-1 overflow-y-auto px-8 pt-14 pb-24">
+        <div
+          ref={chatContainerRef}
+          className={`flex-1 overflow-y-auto px-8 pt-14 ${
+            keyboardOpen ? "pb-[var(--keyboard-height)]" : "pb-24" // Sesuaikan padding-bottom
+          }`}
+          style={{
+            paddingBottom: keyboardOpen
+              ? `${window.innerHeight - window.visualViewport.height + 20}px`
+              : "6rem", // Menambah padding sesuai tinggi keyboard
+          }}
+        >
           <ul className="flex flex-col justify-end">
             <li className="h-5"></li>
             {messages.length > 0 &&
