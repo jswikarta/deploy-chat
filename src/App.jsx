@@ -4,7 +4,7 @@ import ModalLogin from "./modals/ModalLogin";
 import ModalRoom from "./modals/ModalRoom";
 import Chat from "./layouts/Chat";
 
-const ws = new WebSocket("wss://chat.neuvgame.my.id/cable");
+const ws = new WebSocket("wss://www.chat.neuvgame.my.id/cable");
 // const ws = new WebSocket("ws://202.10.35.49:3000/cable");
 
 export default function App() {
