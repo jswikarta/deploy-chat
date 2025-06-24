@@ -18,7 +18,7 @@ export default function ModalRoom({ setShowModalRoom }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await fetch("http://202.10.35.49:3000/rooms", {
+    await fetch("https://www.chat.neuvgame.my.id/rooms", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ room: { name: name } }),

@@ -43,7 +43,7 @@ export default function Sidebar({
   }, [ws]);
 
   const fetchRoom = async () => {
-    const response = await fetch("http://202.10.35.49:3000/rooms");
+    const response = await fetch("https://www.chat.neuvgame.my.id/rooms");
     const data = await response.json();
     setRoomsData(data);
     setRoomsData2(data);

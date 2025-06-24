@@ -14,7 +14,7 @@ export default function FormChat({ roomId }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await fetch(`http://202.10.35.49:3000/rooms/${roomId}/chats`, {
+    await fetch(`https://www.chat.neuvgame.my.id/rooms/${roomId}/chats`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

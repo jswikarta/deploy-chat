@@ -23,7 +23,7 @@ function Chat({ ws, selectedRoom, setSelectedRoom }) {
   useEffect(() => {
     const fetchChat = async (id) => {
       const response = await fetch(
-        `http://202.10.35.49:3000/rooms/${id}/chats`,
+        `https://www.chat.neuvgame.my.id/rooms/${id}/chats`,
       );
       const data = await response.json();
       setMessages(data);
