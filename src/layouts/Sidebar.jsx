@@ -73,7 +73,7 @@ export default function Sidebar({
     <>
       <aside className="fixed h-screen w-full overflow-y-auto border-r border-gray-200 bg-white shadow-xs md:w-128">
         <div className="flex flex-col">
-          <div className="px-8">
+          <div className="px-4">
             <div className="flex h-12 items-center justify-between space-x-2">
               <div className="text-2xl font-bold text-slate-700">Chat Room</div>
 
@@ -108,7 +108,7 @@ export default function Sidebar({
             <ul className="max-h-[calc(100vh-172px)] overflow-y-auto pr-2">
               {roomsData.length > 0 &&
                 roomsData.map((room) => (
-                  <div key={room.id} className="px-8">
+                  <div key={room.id} className="px-4">
                     <ListRoom
                       roomData={room}
                       setSelectedRoom={setSelectedRoom}

@@ -55,7 +55,7 @@ function Chat({ ws, selectedRoom, setSelectedRoom }) {
       <div className="flex h-screen flex-col bg-gray-200">
         <Navbar selectedRoom={selectedRoom} setSelectedRoom={setSelectedRoom} />
 
-        <div className="flex-1 overflow-y-auto px-8 pb-8">
+        <div className="flex-1 overflow-y-auto px-8 pt-14 pb-24">
           <ul className="flex flex-col justify-end">
             <li className="h-5"></li>
             {messages.length > 0 &&

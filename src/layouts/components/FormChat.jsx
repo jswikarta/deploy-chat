@@ -30,7 +30,10 @@ export default function FormChat({ roomId }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex w-full gap-4 px-6 pb-8">
+      <form
+        onSubmit={handleSubmit}
+        className="fixed bottom-0 flex w-full gap-4 bg-gray-200 px-6 pb-8 md:pr-132"
+      >
         <div className="flex h-12 w-full items-end">
           <Textarea
             id={`text`}

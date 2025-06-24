@@ -1,7 +1,7 @@
 export default function Navbar({ selectedRoom, setSelectedRoom }) {
   return (
     <>
-      <nav className="flex h-14 items-center bg-white px-2 shadow-md">
+      <nav className="fixed top-0 flex h-14 w-full items-center bg-white px-2 shadow-md">
         <button
           size="sm"
           onClick={() => setSelectedRoom(null)}
