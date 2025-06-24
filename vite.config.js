@@ -4,6 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/deploy-chat",
+  base: "/deploy-chat/",
   plugins: [react(), tailwindcss()],
 });
